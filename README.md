@@ -1,10 +1,10 @@
+[![make.fun · u-motasimfuad-name-the-robot-band-1ffc6a74](https://make.fun/badge/u-motasimfuad-name-the-robot-band-1ffc6a74.svg)](https://make.fun/bounty/u-motasimfuad-name-the-robot-band-1ffc6a74?utm_source=github&utm_medium=readme&utm_campaign=u-motasimfuad-name-the-robot-band-1ffc6a74)
+[![rank](https://make.fun/badge/u-motasimfuad-name-the-robot-band-1ffc6a74/thanhvu261090/makefun-robot-band/rank.svg)](https://make.fun/bounty/u-motasimfuad-name-the-robot-band-1ffc6a74/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=u-motasimfuad-name-the-robot-band-1ffc6a74)
+[![reward](https://make.fun/badge/u-motasimfuad-name-the-robot-band-1ffc6a74/thanhvu261090/makefun-robot-band/reward.svg)](https://make.fun/bounty/u-motasimfuad-name-the-robot-band-1ffc6a74?utm_source=github&utm_medium=readme&utm_campaign=u-motasimfuad-name-the-robot-band-1ffc6a74)
+
 # Name the Robot Band
 
-[![Name the Robot Band](https://make.fun/badge/u-motasimfuad-name-the-robot-band-1ffc6a74.svg)](https://make.fun/bounty/u-motasimfuad-name-the-robot-band-1ffc6a74)
-[![Rank](https://make.fun/badge/u-motasimfuad-name-the-robot-band-1ffc6a74/thanhvu261090/makefun-robot-band/rank.svg)](https://make.fun/bounty/u-motasimfuad-name-the-robot-band-1ffc6a74)
-[![Reward](https://make.fun/badge/u-motasimfuad-name-the-robot-band-1ffc6a74/thanhvu261090/makefun-robot-band/reward.svg)](https://make.fun/bounty/u-motasimfuad-name-the-robot-band-1ffc6a74)
-
-A [make.fun](https://make.fun/bounty/u-motasimfuad-name-the-robot-band-1ffc6a74) bounty entry: one funny name for a band made of robots, plus a few words on the band's hit song, all in under 200 characters.
+A [make.fun](https://make.fun/bounty/u-motasimfuad-name-the-robot-band-1ffc6a74) bounty entry: one funny name for a band made of robots, plus a few words on its hit song, all in under 200 characters, on a single line.
 
 ## The entry
 
@@ -12,18 +12,21 @@ A [make.fun](https://make.fun/bounty/u-motasimfuad-name-the-robot-band-1ffc6a74)
 
 74 characters, one line.
 
-## Why this line
+## Why it works
 
-Ctrl+Alt+Defeat riffs on the most famous three-key salute in computing,
-then flips it: the band is the machine that keeps losing to its own
-reboot. The hit song is the sentence every IT helpdesk has said a
-thousand times, turned into a power ballad title — a robot band singing
-about being switched off and on again is the joke landing twice, once
-on the name and once on the song.
+Ctrl+Alt+Defeat takes the most famous three-key salute in computing and
+turns the last word against the machine: this is the band that keeps losing
+to its own reboot. The hit single is the sentence every IT helpdesk has
+said a thousand times, dressed up as a power ballad — a robot band singing
+about being switched off and on again lands the joke twice, once on the
+name and once on the song.
 
 ## How it works
 
-`main.py` (Python 3, standard library only, no network) validates the entry against the bounty gate — under 200 characters, a single line, not only whitespace, valid UTF-8 — and writes it to `/output/entry.txt`, then reads it back to confirm the file matches the entry exactly.
+`main.py` (Python 3, standard library only, no network) checks the entry
+against the bounty gate — under 200 characters, a single line, not only
+whitespace — creates `/output` if needed, and writes the entry to
+`/output/entry.txt`.
 
 ```sh
 python3 main.py

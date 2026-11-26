@@ -1,31 +1,42 @@
 #!/usr/bin/env python3
-"""Validate the entry and write it to /output/entry.txt.
+"""Write the robot-band entry to /output/entry.txt.
 
-Entry for make.fun bounty "Name the Robot Band": one funny name for a
-band made of robots, plus a few words on the band's hit song, all in
-under 200 characters, on a single line. Python 3, standard library only.
+Entry for the make.fun bounty "Name the Robot Band": one funny name for
+a band made of robots, plus a few words on its hit song, all in under
+200 characters, on a single line. Python 3, standard library only.
 """
 
 import os
+import sys
 
-ENTRY = 'Ctrl+Alt+Defeat \u2014 hit single "Have You Tried Turning Me Off and On Again?"'
-MAX_CHARS = 200  # entry must be under 200 characters
-OUTPUT_PATH = "/output/entry.txt"
+ENTRY = "Ctrl+Alt+Defeat \u2014 hit single \"Have You Tried Turning Me Off and On Again?\""
+LIMIT = 200
+OUT = "/output/entry.txt"
+
+
+def check(text):
+    """Return a list of gate failures for the entry text (empty = valid)."""
+    problems = []
+    if not text.strip():
+        problems.append("entry is blank")
+    if "\n" in text or "\r" in text:
+        problems.append("entry must be one line")
+    if len(text) >= LIMIT:
+        problems.append("entry is %d chars, limit is under %d" % (len(text), LIMIT))
+    return problems
 
 
 def main():
-    entry = ENTRY.strip()
-    assert entry, "entry must not be empty"
-    assert "\n" not in entry and "\r" not in entry, "entry must be a single line"
-    assert len(entry) < MAX_CHARS, f"entry is {len(entry)} chars, must be under 200"
-    os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
-    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
-        f.write(entry + "\n")
-    with open(OUTPUT_PATH, "r", encoding="utf-8") as f:
-        written = f.read().strip()
-    assert written == entry, "read-back mismatch"
-    print(f"OK: wrote {len(entry)}-char entry to {OUTPUT_PATH}")
-    print(entry)
+    problems = check(ENTRY)
+    if problems:
+        for problem in problems:
+            print("FAIL:", problem, file=sys.stderr)
+        sys.exit(1)
+    os.makedirs(os.path.dirname(OUT), exist_ok=True)
+    with open(OUT, "w", encoding="utf-8") as handle:
+        handle.write(ENTRY + "\n")
+    print("OK: %d-char entry written to %s" % (len(ENTRY), OUT))
+    print(ENTRY)
 
 
 if __name__ == "__main__":
